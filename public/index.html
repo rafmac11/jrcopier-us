@@ -1,0 +1,1009 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Free Copier &amp; Printer Quotes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1a3a5c;
+      --primary-light: #2b6cb0;
+      --primary-lighter: #ebf4ff;
+      --accent: #e8523f;
+      --accent-hover: #d4412e;
+      --text: #2d3748;
+      --text-muted: #718096;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --success: #38a169;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(26,58,92,0.08);
+      --shadow-lg: 0 12px 40px rgba(26,58,92,0.12);
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .form-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Header ─────────────────────────────────── */
+    .form-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 28px 28px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-header::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+
+    .form-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .form-header p {
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    /* ── Progress ────────────────────────────────── */
+    .progress-container {
+      padding: 20px 28px 0;
+    }
+
+    .progress-track {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .progress-track::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--border);
+      transform: translateY(-50%);
+      border-radius: 2px;
+    }
+
+    .progress-fill {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 3px;
+      background: var(--primary-light);
+      transform: translateY(-50%);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .progress-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 3px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.active {
+      border-color: var(--primary-light);
+      color: var(--primary-light);
+      background: var(--primary-lighter);
+    }
+
+    .progress-dot.done {
+      border-color: var(--primary-light);
+      background: var(--primary-light);
+      color: #fff;
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .progress-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+      width: 60px;
+      transition: color 0.3s;
+    }
+
+    .progress-label.active {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* ── Form Body ──────────────────────────────── */
+    .form-body {
+      padding: 24px 28px 28px;
+      min-height: 300px;
+    }
+
+    /* ── Sections ────────────────────────────────── */
+    .form-section {
+      display: none;
+      animation: fadeSlideIn 0.35s ease;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* ── Radio Cards ─────────────────────────────── */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radio-card {
+      position: relative;
+      cursor: pointer;
+      display: block;
+    }
+
+    .radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-card-content {
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .radio-card-content:hover {
+      border-color: var(--primary-light);
+      background: var(--primary-lighter);
+    }
+
+    .radio-card input:checked + .radio-card-content {
+      border-color: var(--primary-light);
+      background: var(--primary-lighter);
+      box-shadow: 0 0 0 1px var(--primary-light);
+    }
+
+    .radio-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary-lighter);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .radio-card input:checked + .radio-card-content .radio-icon {
+      background: var(--primary-light);
+    }
+
+    .radio-card input:checked + .radio-card-content .radio-icon svg {
+      color: #fff;
+    }
+
+    .radio-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--primary-light);
+      transition: color 0.2s;
+    }
+
+    .radio-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .radio-text span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── Input Fields ────────────────────────────── */
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--card);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .field-input::placeholder {
+      color: #cbd5e0;
+    }
+
+    .field-input:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(43,108,176,0.1);
+    }
+
+    .field-input.is-valid {
+      border-color: var(--success);
+    }
+
+    .field-input.is-invalid {
+      border-color: var(--accent);
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 4px;
+      display: none;
+    }
+
+    .field-input.is-invalid + .field-error {
+      display: block;
+    }
+
+    /* ── Buttons ──────────────────────────────────── */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      gap: 12px;
+    }
+
+    .btn-row.end {
+      justify-content: flex-end;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-back {
+      background: none;
+      color: var(--text-muted);
+      padding: 12px 16px;
+    }
+
+    .btn-back:hover {
+      color: var(--text);
+    }
+
+    .btn-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-next {
+      background: var(--primary);
+      color: #fff;
+      margin-left: auto;
+    }
+
+    .btn-next:hover {
+      background: var(--primary-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(26,58,92,0.3);
+    }
+
+    .btn-submit {
+      background: var(--accent);
+      color: #fff;
+      width: 100%;
+      justify-content: center;
+      padding: 14px 28px;
+      font-size: 16px;
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(232,82,63,0.35);
+    }
+
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── ZIP confirmation banner ──────────────────── */
+    .zip-banner {
+      background: linear-gradient(135deg, #ebf8ff, #e6fffa);
+      border: 1px solid #b2f5ea;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .zip-banner svg {
+      color: var(--success);
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .zip-banner p {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .zip-banner strong {
+      color: var(--primary);
+    }
+
+    /* ── Terms ────────────────────────────────────── */
+    .terms-wrap {
+      margin-top: 16px;
+      margin-bottom: 20px;
+    }
+
+    .terms-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .terms-label input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary-light);
+      flex-shrink: 0;
+    }
+
+    .terms-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .terms-text strong {
+      color: var(--text);
+    }
+
+    .terms-error {
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 4px;
+      margin-left: 28px;
+      display: none;
+    }
+
+    /* ── Success Screen ──────────────────────────── */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 40px 28px;
+    }
+
+    .success-screen.active {
+      display: block;
+      animation: fadeSlideIn 0.5s ease;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c6f6d5, #9ae6b4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
+      color: #276749;
+    }
+
+    .success-screen h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .success-screen p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ── Trust badges ────────────────────────────── */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .trust-item svg {
+      width: 14px;
+      height: 14px;
+      color: var(--success);
+    }
+
+    /* ── Responsive ──────────────────────────────── */
+    @media (max-width: 520px) {
+      body { padding: 8px; }
+      .form-header { padding: 22px 20px 18px; }
+      .form-header h1 { font-size: 19px; }
+      .form-body { padding: 20px; }
+      .progress-container { padding: 16px 20px 0; }
+      .trust-bar { gap: 12px; padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-card">
+      <!-- Header -->
+      <div class="form-header">
+        <h1>Get Free Copier &amp; Printer Quotes</h1>
+        <p>Compare prices from top suppliers in your area</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-container">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+          <div class="progress-dot active" data-step="0">1</div>
+          <div class="progress-dot" data-step="1">2</div>
+          <div class="progress-dot" data-step="2">3</div>
+          <div class="progress-dot" data-step="3">4</div>
+          <div class="progress-dot" data-step="4">5</div>
+        </div>
+        <div class="progress-labels">
+          <span class="progress-label active">Usage</span>
+          <span class="progress-label">Type</span>
+          <span class="progress-label">Location</span>
+          <span class="progress-label">Email</span>
+          <span class="progress-label">Details</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="quoteForm" novalidate>
+        <div class="form-body">
+
+          <!-- Section 1: Usage -->
+          <div class="form-section active" data-section="0">
+            <h3 class="section-title">Where will the copier be used?</h3>
+            <p class="section-subtitle">This helps us match you with the right suppliers.</p>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="usage" value="commercial" required>
+                <div class="radio-card-content">
+                  <div class="radio-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+                  </div>
+                  <div class="radio-text">
+                    <strong>Commercial Business</strong>
+                    <span>Office, retail, education, healthcare, etc.</span>
+                  </div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="usage" value="home-based">
+                <div class="radio-card-content">
+                  <div class="radio-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  </div>
+                  <div class="radio-text">
+                    <strong>Home-Based Business</strong>
+                    <span>Home office, freelancer, small business</span>
+                  </div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="usage" value="personal">
+                <div class="radio-card-content">
+                  <div class="radio-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <div class="radio-text">
+                    <strong>Personal Use</strong>
+                    <span>Home printing, personal documents</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="btn-row end">
+              <button type="button" class="btn btn-next" data-next>Next</button>
+            </div>
+          </div>
+
+          <!-- Section 2: Printer Type -->
+          <div class="form-section" data-section="1">
+            <h3 class="section-title">What type of copier do you need?</h3>
+            <p class="section-subtitle">Select the option that best fits your workspace.</p>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="printerType" value="floor" required>
+                <div class="radio-card-content">
+                  <div class="radio-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="8" rx="1"/><rect x="4" y="10" width="16" height="8" rx="1"/><line x1="8" y1="18" x2="8" y2="22"/><line x1="16" y1="18" x2="16" y2="22"/><line x1="6" y1="22" x2="18" y2="22"/></svg>
+                  </div>
+                  <div class="radio-text">
+                    <strong>Floor-Standing Model</strong>
+                    <span>High-volume, multifunctional capabilities</span>
+                  </div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="printerType" value="desktop">
+                <div class="radio-card-content">
+                  <div class="radio-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                  </div>
+                  <div class="radio-text">
+                    <strong>Desktop Model</strong>
+                    <span>Compact size, great for smaller spaces</span>
+                  </div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="printerType" value="managed">
+                <div class="radio-card-content">
+                  <div class="radio-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </div>
+                  <div class="radio-text">
+                    <strong>Managed Print Services</strong>
+                    <span>Complete solution with service &amp; supplies</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+              <button type="button" class="btn btn-next" data-next>Next</button>
+            </div>
+          </div>
+
+          <!-- Section 3: ZIP Code -->
+          <div class="form-section" data-section="2">
+            <h3 class="section-title">What's your ZIP code?</h3>
+            <p class="section-subtitle">Your zip ensures quotes are accurate for your area.</p>
+            <div class="field-group">
+              <label class="field-label" for="zip">ZIP / Postal Code</label>
+              <input type="text" class="field-input" id="zip" name="zip" required placeholder="e.g. 55311" maxlength="10" autocomplete="postal-code">
+              <div class="field-error">Please enter a valid ZIP or postal code</div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+              <button type="button" class="btn btn-next" data-next>Next</button>
+            </div>
+          </div>
+
+          <!-- Section 4: Email -->
+          <div class="form-section" data-section="3">
+            <div class="zip-banner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p><strong>Great news!</strong> We found suppliers near <strong id="zipDisplay">you</strong>.</p>
+            </div>
+            <h3 class="section-title">Where should we send your quotes?</h3>
+            <p class="section-subtitle">We'll email your free, no-obligation quotes.</p>
+            <div class="field-group">
+              <label class="field-label" for="email">Email Address</label>
+              <input type="email" class="field-input" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+              <div class="field-error">Please enter a valid email address</div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn btn-back" data-back><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+              <button type="button" class="btn btn-next" data-next>Next</button>
+            </div>
+          </div>
+
+          <!-- Section 5: Contact Details -->
+          <div class="form-section" data-section="4">
+            <h3 class="section-title">Almost done!</h3>
+            <p class="section-subtitle">Fill in the last details to get your free quotes.</p>
+
+            <div class="field-group">
+              <label class="field-label" for="fullname">Full Name</label>
+              <input type="text" class="field-input" id="fullname" name="fullname" required placeholder="First and Last Name" autocomplete="name">
+              <div class="field-error">Please enter your first and last name</div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="company">Company Name <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+              <input type="text" class="field-input" id="company" name="company" placeholder="Your Company" autocomplete="organization">
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="phone">Phone Number</label>
+              <input type="tel" class="field-input" id="phone" name="phone" required placeholder="(123) 456-7890" autocomplete="tel">
+              <div class="field-error">Please enter a valid phone number</div>
+            </div>
+
+            <div class="terms-wrap">
+              <label class="terms-label">
+                <input type="checkbox" id="terms" required>
+                <span class="terms-text">
+                  By clicking "Compare Prices" below, I consent to receive automated marketing calls and texts from or on behalf of JR Copier and up to <strong>five marketing partners</strong> at the phone number provided above. I understand consent is not a condition of purchase. I also agree to JR Copier's Terms of Use.
+                </span>
+              </label>
+              <div class="terms-error" id="termsError">You must agree to the terms to continue</div>
+            </div>
+
+            <div class="btn-row" style="flex-direction:column;gap:10px;">
+              <button type="submit" class="btn btn-submit" id="submitBtn">Compare Prices</button>
+              <button type="button" class="btn btn-back" data-back style="margin:0 auto;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- Success Screen -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Quotes on the way!</h2>
+        <p>We've matched you with suppliers in your area. Check your email for your free quotes shortly.</p>
+      </div>
+
+      <!-- Trust Bar -->
+      <div class="trust-bar">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          100% Free
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          No Obligation
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Secure
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    const form = document.getElementById('quoteForm');
+    const sections = document.querySelectorAll('.form-section');
+    const dots = document.querySelectorAll('.progress-dot');
+    const labels = document.querySelectorAll('.progress-label');
+    const progressFill = document.getElementById('progressFill');
+    const successScreen = document.getElementById('successScreen');
+    let current = 0;
+
+    // Determine the API base URL
+    // If embedded via iframe, the form's own origin is the API host
+    const API_BASE = window.location.origin;
+
+    // ── Progress update ──────────────────────────
+    function updateProgress() {
+      const pct = (current / (sections.length - 1)) * 100;
+      progressFill.style.width = pct + '%';
+
+      dots.forEach((dot, i) => {
+        dot.classList.remove('active', 'done');
+        if (i < current) dot.classList.add('done');
+        else if (i === current) dot.classList.add('active');
+      });
+
+      labels.forEach((lbl, i) => {
+        lbl.classList.toggle('active', i === current);
+      });
+    }
+
+    // ── Navigation ───────────────────────────────
+    function goTo(step) {
+      if (step < 0 || step >= sections.length) return;
+      sections[current].classList.remove('active');
+      current = step;
+      sections[current].classList.add('active');
+      updateProgress();
+    }
+
+    // ── Validation ───────────────────────────────
+    function validateField(input) {
+      const val = input.value.trim();
+
+      if (input.required && !val) {
+        input.classList.add('is-invalid');
+        input.classList.remove('is-valid');
+        return false;
+      }
+
+      let valid = true;
+      if (input.type === 'email') {
+        valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      } else if (input.type === 'tel') {
+        valid = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(val);
+      } else if (input.id === 'zip') {
+        valid = /(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ] ?\d[ABCEGHJKLMNPRSTVWXYZ]\d$)/i.test(val);
+      } else if (input.id === 'fullname') {
+        valid = /^[a-zA-ZÀ-ÿ]+ [a-zA-ZÀ-ÿ]+/.test(val);
+      }
+
+      input.classList.toggle('is-invalid', !valid);
+      input.classList.toggle('is-valid', valid);
+      return valid;
+    }
+
+    function validateSection(idx) {
+      const section = sections[idx];
+      let valid = true;
+
+      // Radios
+      const radioGroups = new Set();
+      section.querySelectorAll('input[type="radio"][required]').forEach(r => radioGroups.add(r.name));
+      radioGroups.forEach(name => {
+        const checked = section.querySelector(`input[name="${name}"]:checked`);
+        if (!checked) {
+          valid = false;
+          section.querySelectorAll('.radio-card-content').forEach(c => c.style.borderColor = 'var(--accent)');
+        } else {
+          section.querySelectorAll('.radio-card-content').forEach(c => c.style.borderColor = '');
+        }
+      });
+
+      // Text inputs
+      section.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"])').forEach(input => {
+        if (!validateField(input)) valid = false;
+      });
+
+      // Checkbox
+      const terms = section.querySelector('#terms');
+      if (terms && terms.required) {
+        const termsErr = document.getElementById('termsError');
+        if (!terms.checked) {
+          valid = false;
+          if (termsErr) termsErr.style.display = 'block';
+        } else {
+          if (termsErr) termsErr.style.display = 'none';
+        }
+      }
+
+      return valid;
+    }
+
+    // ── Radio auto-advance ───────────────────────
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        // Reset border colors
+        const section = sections[current];
+        section.querySelectorAll('.radio-card-content').forEach(c => c.style.borderColor = '');
+        setTimeout(() => {
+          if (current < sections.length - 1) {
+            goTo(current + 1);
+          }
+        }, 400);
+      });
+    });
+
+    // ── Next / Back buttons ──────────────────────
+    document.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (validateSection(current)) {
+          // Update ZIP display on section 4
+          if (current === 2) {
+            const zipVal = document.getElementById('zip').value.trim();
+            document.getElementById('zipDisplay').textContent = zipVal || 'you';
+          }
+          goTo(current + 1);
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', () => goTo(current - 1));
+    });
+
+    // ── Live validation ──────────────────────────
+    form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"])').forEach(input => {
+      input.addEventListener('blur', () => validateField(input));
+      input.addEventListener('input', () => {
+        if (input.classList.contains('is-invalid')) validateField(input);
+      });
+    });
+
+    // ── Form submission ──────────────────────────
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!validateSection(current)) return;
+
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<div class="spinner"></div> Sending...';
+
+      const formData = {
+        usage: form.querySelector('input[name="usage"]:checked')?.value || '',
+        printerType: form.querySelector('input[name="printerType"]:checked')?.value || '',
+        zip: document.getElementById('zip').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        fullname: document.getElementById('fullname').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        pageUrl: window.location !== window.parent.location
+          ? document.referrer
+          : window.location.href,
+      };
+
+      try {
+        const res = await fetch(API_BASE + '/api/send-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formData }),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          form.style.display = 'none';
+          document.querySelector('.progress-container').style.display = 'none';
+          successScreen.classList.add('active');
+
+          // Notify parent window (for redirect or tracking)
+          if (window.parent !== window) {
+            window.parent.postMessage({
+              type: 'jrcopier-form-success',
+              data: { email: formData.email, name: formData.fullname }
+            }, '*');
+          }
+        } else {
+          throw new Error(data.error || 'Submission failed');
+        }
+      } catch (err) {
+        console.error('Form error:', err);
+        alert('There was a problem submitting your form. Please try again or contact us directly.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    updateProgress();
+  })();
+  </script>
+</body>
+</html>
