@@ -62,23 +62,18 @@ async function sendToCRM(formData) {
   }
 
   const payload = {
+    form_id: process.env.CRM_FORM_ID || '',
     source: 'jr-copier-quote-form',
-    submitted_at: new Date().toISOString(),
-    contact: {
-      full_name: formData.fullname || '',
-      first_name: formData.fullname ? formData.fullname.split(' ')[0] : '',
-      last_name: formData.fullname ? formData.fullname.split(' ').slice(1).join(' ') : '',
+    lead: {
+      name: formData.fullname || '',
       email: formData.email || '',
       phone: formData.phone || '',
       company: formData.company || '',
       zip_code: formData.zip || '',
-    },
-    project: {
       usage_type: usageLabels[formData.usage] || formData.usage || '',
       printer_type: printerTypeLabels[formData.printerType] || formData.printerType || '',
+      page_url: formData.pageUrl || '',
     },
-    referral_source: formData.referralSource || '',
-    page_url: formData.pageUrl || '',
   };
 
   const response = await fetch(CRM_WEBHOOK_URL, {
@@ -204,5 +199,6 @@ app.listen(PORT, () => {
   console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? 'SET' : 'MISSING');
   console.log('CRM_API_KEY:', process.env.CRM_API_KEY ? 'SET' : 'MISSING');
   console.log('CRM_WEBHOOK_URL:', process.env.CRM_WEBHOOK_URL ? 'SET' : 'MISSING');
+  console.log('CRM_FORM_ID:', process.env.CRM_FORM_ID ? 'SET' : 'MISSING');
   console.log('Recipients:', getRecipients().join(', '));
 });
