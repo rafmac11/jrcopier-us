@@ -986,16 +986,15 @@
         const data = await res.json();
 
         if (data.success) {
-          form.style.display = 'none';
-          document.querySelector('.progress-container').style.display = 'none';
-          successScreen.classList.add('active');
-
           // Notify parent window (for redirect or tracking)
           if (window.parent !== window) {
             window.parent.postMessage({
               type: 'jrcopier-form-success',
               data: { email: formData.email, name: formData.fullname }
             }, '*');
+            window.parent.location.href = 'https://copier-printers.us/thank-you/';
+          } else {
+            window.location.href = 'https://copier-printers.us/thank-you/';
           }
         } else {
           throw new Error(data.error || 'Submission failed');
