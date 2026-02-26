@@ -605,7 +605,7 @@
       </div>
 
       <!-- Form -->
-      <form id="quoteForm" novalidate>
+      <form id="quoteForm" novalidate data-tf-element-role="offer">
         <div class="form-body">
 
           <!-- Section 1: Usage -->
@@ -762,15 +762,20 @@
             <div class="terms-wrap">
               <label class="terms-label">
                 <input type="checkbox" id="terms" required>
+                <div data-tf-element-role="consent-language">
                 <span class="terms-text">
                   By clicking "Compare Prices" below, I consent to receive automated marketing calls and texts from or on behalf of JR Copier and up to <strong>five marketing partners</strong> at the phone number provided above. I understand consent is not a condition of purchase. I also agree to JR Copier's Terms of Use.
                 </span>
+                </div>
               </label>
               <div class="terms-error" id="termsError">You must agree to the terms to continue</div>
             </div>
 
+            <!-- TrustedForm hidden field -->
+            <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl_0" value="">
+
             <div class="btn-row" style="flex-direction:column;gap:10px;">
-              <button type="submit" class="btn btn-submit" id="submitBtn">Compare Prices</button>
+              <button type="submit" class="btn btn-submit" id="submitBtn" data-tf-element-role="submit">Compare Prices</button>
               <button type="button" class="btn btn-back" data-back style="margin:0 auto;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
             </div>
           </div>
@@ -968,6 +973,7 @@
         pageUrl: window.location !== window.parent.location
           ? document.referrer
           : window.location.href,
+        trustedformCertUrl: document.getElementById('xxTrustedFormCertUrl_0')?.value || '',
       };
 
       try {
@@ -1005,5 +1011,19 @@
     updateProgress();
   })();
   </script>
+  <!-- TrustedForm -->
+  <script type="text/javascript">
+    (function(){
+      var tf = document.createElement('script');
+      tf.type = 'text/javascript'; tf.async = true;
+      tf.src = ("https:" == document.location.protocol ? 'https' : 'http') +
+        "://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&use_tagged_consent=true&ping_field=xxTrustedFormPingUrl&invert_field_sensitivity=false&l=" +
+        new Date().getTime() + Math.random();
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(tf, s);
+    })();
+  </script>
+  <noscript><img src="https://api.trustedform.com/ns.gif" /></noscript>
+  <!-- End TrustedForm -->
 </body>
 </html>

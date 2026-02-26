@@ -55,24 +55,94 @@ const printerTypeLabels = {
   managed: 'Managed Print Services',
 };
 
+// ─── 360Connect field mappings ───────────────────────────────────
+const usage360Labels = {
+  commercial:  'Commercial business',
+  'home-based': 'Home-based business',
+  personal:    'Personal (non-business use)',
+};
+
+const printerType360Labels = {
+  floor:   'Floor-standing model',
+  desktop: 'Desktop model',
+  managed: 'Managed print services',
+};
+
+const LEADCONDUIT_URL =
+  'https://app.leadconduit.com/flows/56f43aaa2de2a66e7b86c529/sources/5e3b1a0a1814651655cf75ef/submit';
+const CAMPAIGN_ID = '4801c0f2-8be5-42fa-e23b-08de73da420a';
+
+// ─── Post directly to 360Connect LeadConduit ────────────────────
+async function sendTo360Connect(formData) {
+  const nameParts = (formData.fullname || '').trim().split(/\s+/);
+  const firstName = nameParts[0] || '';
+  const lastName  = nameParts.slice(1).join(' ') || firstName;
+
+  const payload = new URLSearchParams({
+    affiliate_campaign_id_360: CAMPAIGN_ID,
+    category_name_360:         'Commercial Copiers',
+    first_name:                firstName,
+    last_name:                 lastName,
+    company_name_360:          formData.company || '',
+    phone_1:                   formData.phone   || '',
+    email:                     formData.email   || '',
+    install_postal_code_360:   formData.zip     || '',
+    answer1_text_360:          usage360Labels[formData.usage]        || formData.usage        || '',
+    answer2_text_360:          printerType360Labels[formData.printerType] || formData.printerType || '',
+    trustedform_cert_url:      formData.trustedformCertUrl || '',
+  });
+
+  const response = await fetch(LEADCONDUIT_URL, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body:    payload.toString(),
+  });
+
+  const text = await response.text();
+  console.log('360Connect response:', response.status, text);
+
+  if (!response.ok) {
+    throw new Error(`360Connect error: ${response.status} — ${text}`);
+  }
+
+  try { return JSON.parse(text); } catch { return { raw: text }; }
+}
+
 // ─── Send to CRM Webhook ────────────────────────────────────────
 async function sendToCRM(formData) {
   if (!CRM_WEBHOOK_URL || !CRM_API_KEY) {
     throw new Error('CRM webhook not configured');
   }
 
+  const nameParts = (formData.fullname || '').trim().split(/\s+/);
+  const firstName = nameParts[0] || '';
+  const lastName  = nameParts.slice(1).join(' ') || firstName;
+
   const payload = {
     form_id: process.env.CRM_FORM_ID || '',
     source: 'jr-copier-quote-form',
     lead: {
-      name: formData.fullname || '',
-      email: formData.email || '',
-      phone: formData.phone || '',
-      company: formData.company || '',
-      zip_code: formData.zip || '',
-      usage_type: usageLabels[formData.usage] || formData.usage || '',
+      // Standard fields
+      name:         formData.fullname || '',
+      email:        formData.email   || '',
+      phone:        formData.phone   || '',
+      company:      formData.company || '',
+      zip_code:     formData.zip     || '',
+      usage_type:   usageLabels[formData.usage]             || formData.usage       || '',
       printer_type: printerTypeLabels[formData.printerType] || formData.printerType || '',
-      page_url: formData.pageUrl || '',
+      page_url:     formData.pageUrl || '',
+
+      // 360Connect required fields
+      first_name:                firstName,
+      last_name:                 lastName,
+      company_name_360:          formData.company || '',
+      phone_1:                   formData.phone   || '',
+      install_postal_code_360:   formData.zip     || '',
+      category_name_360:         'Commercial Copiers',
+      affiliate_campaign_id_360: '4801c0f2-8be5-42fa-e23b-08de73da420a',
+      answer1_text_360:          usage360Labels[formData.usage]             || formData.usage       || '',
+      answer2_text_360:          printerType360Labels[formData.printerType] || formData.printerType || '',
+      trustedform_cert_url:      formData.trustedformCertUrl || '',
     },
   };
 
@@ -146,8 +216,8 @@ app.post('/api/send-form', async (req, res) => {
 
     const name = formData.fullname || 'Unknown';
 
-    // Send email + CRM in parallel
-    const [emailResult, crmResult] = await Promise.allSettled([
+    // Send email + CRM + 360Connect in parallel
+    const [emailResult, crmResult, lc360Result] = await Promise.allSettled([
       getResend().emails.send({
         from: FROM_EMAIL,
         to: getRecipients(),
@@ -156,6 +226,7 @@ app.post('/api/send-form', async (req, res) => {
         ...(formData.email && { replyTo: formData.email }),
       }),
       sendToCRM(formData),
+      sendTo360Connect(formData),
     ]);
 
     // Log results
@@ -175,11 +246,18 @@ app.post('/api/send-form', async (req, res) => {
       console.error('CRM webhook failed:', crmResult.reason);
     }
 
-    const emailOk = emailResult.status === 'fulfilled' && !emailResult.value.error;
-    const crmOk = crmResult.status === 'fulfilled';
+    if (lc360Result.status === 'fulfilled') {
+      console.log('360Connect LeadConduit sent successfully:', JSON.stringify(lc360Result.value));
+    } else {
+      console.error('360Connect failed:', lc360Result.reason);
+    }
 
-    if (emailOk || crmOk) {
-      return res.json({ success: true, email: emailOk, crm: crmOk });
+    const emailOk  = emailResult.status  === 'fulfilled' && !emailResult.value.error;
+    const crmOk    = crmResult.status    === 'fulfilled';
+    const lc360Ok  = lc360Result.status  === 'fulfilled';
+
+    if (emailOk || crmOk || lc360Ok) {
+      return res.json({ success: true, email: emailOk, crm: crmOk, leadconduit: lc360Ok });
     } else {
       return res.status(500).json({ error: 'All integrations failed' });
     }
